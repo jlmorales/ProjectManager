@@ -1,5 +1,6 @@
 package com.projectmanager.Services;
 
+import com.projectmanager.Exceptions.ProjectIdException;
 import com.projectmanager.Repositories.ProjectRepository;
 import com.projectmanager.domain.Project;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,12 @@ public class ProjectService {
     private ProjectRepository projectRepository;
 
     public Project saveOrUpdateProject(Project project){
-        return projectRepository.save(project);
+        try{
+            project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+            return projectRepository.save(project);
+        }catch (Exception e){
+            throw new ProjectIdException("Project Id '" + project.getProjectIdentifier().toUpperCase() + "' already exists");
+        }
+
     }
 }
