@@ -10,4 +10,6 @@ import java.util.List;
 public interface ProjectTaskRepository extends CrudRepository<ProjectTask, Long> {
 
     public List<ProjectTask> findByProjectIdentifierOrderByPriority(String id);
+
+    public ProjectTask findByProjectSequence(String sequence);
 }
