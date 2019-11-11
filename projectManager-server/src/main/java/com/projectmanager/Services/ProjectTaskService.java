@@ -40,10 +40,10 @@ public class ProjectTaskService {
             //we want project sequence to be like: IDPRO-1 IDPRO-2
             //Update the BL sequence
             //Initial priority if priority null
-            if(projectTask.getPriority() == null){
+            if(projectTask.getStatus()=="" || projectTask.getStatus() == null){
                 projectTask.setPriority(3);
             }
-            if(projectTask.getStatus() == "" || projectTask.getStatus() == null){
+            if(projectTask.getPriority()==0 || projectTask.getPriority() == null){
                 projectTask.setStatus("TO_DO");
             }
 

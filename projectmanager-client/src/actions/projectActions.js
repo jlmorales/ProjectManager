@@ -4,7 +4,7 @@ import { GET_ERRORS, GET_PROJECTS, GET_PROJECT, DELETE_PROJECT } from "./types";
 export const createProject = (project, history) => async dispatch => {
   try {
     //do post if it works redirect to dashboard and dispatch
-    const res = await axios.post("/api/project", project);
+    await axios.post("/api/project", project);
     history.push("/dashboard");
     //wipe state of errors if updated
     dispatch({ type: GET_ERRORS, payload: {} });
